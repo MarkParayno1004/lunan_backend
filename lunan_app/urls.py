@@ -7,4 +7,5 @@ urlpatterns = [
     path('hello/', views.say_hello),
     path('query_users/', views.query_user),
     path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
+    path("csrf/", views.csrf_token_view),
 ]
