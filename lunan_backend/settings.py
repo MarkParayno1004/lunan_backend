@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'lunan_backend.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'lunan_db',
+        "NAME": 'lunan',
         "USER": 'postgres',
         "PASSWORD": 'admin',
         "HOST": 'localhost',
