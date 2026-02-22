@@ -121,6 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+]
+
+# SECRET key for JWT
+JWT_SECRET = "dG{/8C=Og-c1wy5+X&_Nb&XEi.QUq>c.)uGn]J^!}W6"  # change this in production!
+JWT_ALGORITHM = "HS256"
+JWT_EXP_DELTA_SECONDS = 3600  # 1 hour expiration
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
