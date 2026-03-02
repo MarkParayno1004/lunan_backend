@@ -7,4 +7,5 @@ class UserModel(graphene.ObjectType):
     password = graphene.String()
     email = graphene.String()
     contact_no = graphene.String()
+    role = graphene.String()
 

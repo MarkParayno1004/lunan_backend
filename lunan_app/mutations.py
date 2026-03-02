@@ -1,6 +1,6 @@
 import graphene
 import jwt
-from .resolvers import UserModel
+from .graphql.account_user.models import UserModel
 from .models import User
 from .exceptions import AuthenticationError
 from django.conf import settings
@@ -19,6 +19,7 @@ class CreateUserInput(graphene.InputObjectType):
     password = graphene.String(required=True)
     email = graphene.String(required=True)
     contact_no = graphene.String(required=True)
+    role = graphene.String()
 
 
 class LoginUserInput(graphene.InputObjectType):
@@ -41,6 +42,7 @@ class CreateUser(graphene.Mutation):
             password=hashed_password,
             email=create_user.email,
             contact_no=create_user.contact_no,
+            role=create_user.role,
         )
         user.save()
 

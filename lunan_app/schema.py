@@ -12,6 +12,7 @@ class UserModel(DjangoObjectType):
             "last_name",
             "email",
             "contact_no",
+            "role"
         )
 
 

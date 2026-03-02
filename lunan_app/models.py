@@ -7,3 +7,4 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     contact_no = models.CharField(max_length=255)
+    role = models.CharField(max_length=255, blank=True)
