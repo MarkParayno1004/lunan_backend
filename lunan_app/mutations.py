@@ -1,30 +1,17 @@
 import graphene
 import jwt
-from .graphql.account_user.models import UserModel
+from .graphql.account_user.models import CreateUserInput, LoginUserInput, UserModel
 from .models import User
 from .exceptions import AuthenticationError
 from django.conf import settings
 from django.utils import timezone
 from argon2 import PasswordHasher, exceptions as argon2_exceptions
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 ph = PasswordHasher()
 
 def hash_password(password: str)->str:
     return ph.hash(password)
-
-class CreateUserInput(graphene.InputObjectType):
-    first_name = graphene.String(required=True)
-    last_name = graphene.String(required=True)
-    password = graphene.String(required=True)
-    email = graphene.String(required=True)
-    contact_no = graphene.String(required=True)
-    role = graphene.String()
-
-
-class LoginUserInput(graphene.InputObjectType):
-    email = graphene.String(required=True)
-    password = graphene.String(required=True)
 
 
 class CreateUser(graphene.Mutation):
