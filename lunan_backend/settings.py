@@ -130,6 +130,24 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
 ]
 
+# Redis / Cache
+# https://docs.djangoproject.com/en/5.2/topics/cache/
+REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0")
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_URL,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
+
+# Optional: use Redis for sessions (uncomment to enable)
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# SESSION_CACHE_ALIAS = "default"
+
 # SECRET key for JWT
 JWT_SECRET = "dG{/8C=Og-c1wy5+X&_Nb&XEi.QUq>c.)uGn]J^!}W6"
 JWT_ALGORITHM = "HS256"
