@@ -1,4 +1,5 @@
 import graphene
+from .enums import RoleEnum
 
 
 class UserModel(graphene.ObjectType):
@@ -7,7 +8,7 @@ class UserModel(graphene.ObjectType):
     last_name = graphene.String()
     email = graphene.String()
     contact_no = graphene.String()
-    role = graphene.String()
+    role = graphene.Field(RoleEnum)
 
 
 class AddressModel(graphene.ObjectType):
@@ -71,7 +72,7 @@ class CreateUserInput(graphene.InputObjectType):
     password = graphene.String(required=True)
     email = graphene.String(required=True)
     contact_no = graphene.String(required=True)
-    role = graphene.String()
+    role = RoleEnum()
 
 
 class LoginUserInput(graphene.InputObjectType):

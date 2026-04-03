@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
 from django.http import JsonResponse
 from .models import User
 
@@ -13,4 +14,5 @@ def query_user(request):
 
 @ensure_csrf_cookie
 def csrf_token_view(request):
-    return JsonResponse({"detail": "CSRF cookie set"})
+    token = get_token(request)
+    return JsonResponse({"detail": "CSRF cookie set", "csrfToken": token})
