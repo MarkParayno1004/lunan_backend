@@ -9,4 +9,5 @@ urlpatterns = [
     path('query_users/', views.query_user),
     path('graphql/', ensure_csrf_cookie(GraphQLView.as_view(graphiql=True, schema=schema))),
     path("csrf/", views.csrf_token_view),
+    path("twilio-token/", views.twilio_token_view),
 ]

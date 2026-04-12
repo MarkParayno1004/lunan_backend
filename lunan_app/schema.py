@@ -106,6 +106,7 @@ class Mutations(graphene.ObjectType):
 
 class Query(graphene.ObjectType):
     users = graphene.List(UserModel)
+    users_by_role = graphene.List(UserType, role=graphene.String())
     user = graphene.Field(UserType, id=graphene.ID())
     addresses = graphene.List(AddressType)
     address = graphene.Field(AddressType, id=graphene.ID())
@@ -122,6 +123,9 @@ class Query(graphene.ObjectType):
 
     def resolve_users(self, info, **kwargs):
         return User.objects.all()
+
+    def resolve_users_by_role(self, info, role):
+        return User.objects.filter(role=role)
 
     def resolve_user(self, info, id):
         return User.objects.filter(pk=id).first()
