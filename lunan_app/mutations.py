@@ -52,7 +52,7 @@ class LoginUser(graphene.Mutation):
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
-            raise GraphQLError("Invalid credentials")
+            raise GraphQLError("User Does Not Exist")
 
         password_ok = False
 
